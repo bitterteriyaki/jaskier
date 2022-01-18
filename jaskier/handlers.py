@@ -26,7 +26,7 @@ import datetime
 import logging
 from logging import Handler, LogRecord
 from pathlib import Path
-from typing import Iterable, List, Union
+from typing import Iterable, List, Optional, Union
 
 from rich import get_console
 from rich.table import Table
@@ -34,13 +34,13 @@ from rich.highlighter import ReprHighlighter
 from rich.console import ConsoleRenderable, RenderableType
 from rich.text import Text
 from rich.containers import Renderables
+from rich.traceback import Traceback
 
 
 __all__ = ('JaskierHandler',)
 
 
 # TODO:
-# - Handle tracebacks (add custom table for tracebacks).
 # - Check compatibility with Windows.
 # - Add documentation.
 # - Add CI/CD and probably tests.
@@ -85,6 +85,7 @@ class JaskierHandler(Handler):
     def render_log(
         self,
         message: ConsoleRenderable,
+        traceback: Optional[Traceback],
         record: LogRecord
     ) -> ConsoleRenderable:
         """
@@ -93,7 +94,7 @@ class JaskierHandler(Handler):
         level = record.levelname
         path = Path(record.pathname).name
 
-        renderables = [message]
+        renderables = [message] if not traceback else [message, traceback]
         table = self._create_table(renderables, time, level, path, record)
 
         return table
@@ -140,8 +141,20 @@ class JaskierHandler(Handler):
         return table
 
     def emit(self, record: LogRecord) -> None:
+        traceback = None
+
+        if record.exc_info and record.exc_info != (None, None, None):
+            exc_type, exc_value, exc_traceback = record.exc_info
+            
+            assert exc_type is not None
+            assert exc_value is not None
+
+            traceback = Traceback.from_exception(
+                exc_type, exc_value, exc_traceback, show_locals=True,
+            )
+        
         renderable_message = self.render_message(record)
-        renderable_log = self.render_log(renderable_message, record)
+        renderable_log = self.render_log(renderable_message, traceback, record)
 
         try:
             self.console.print(renderable_log)
