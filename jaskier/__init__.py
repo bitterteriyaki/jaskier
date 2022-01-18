@@ -1,7 +1,23 @@
 """
 """
 
-__all__ = ('JaskierHandler',)
+__title__ = 'jaskier'
+__author__ = 'kyomi'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2022-present kyomi'
+__version__ = '0.1.0'
 
+
+from typing import Literal, NamedTuple
 
 from .handlers import JaskierHandler as JaskierHandler
+
+
+class VersionInfo(NamedTuple):
+    major: int
+    minor: int
+    micro: int
+    releaselevel: Literal['alpha', 'beta', 'candidate', 'stable']
+    serial: int
+
+version_info = VersionInfo(0, 1, 0, 'stable', 0)
