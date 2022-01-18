@@ -1,0 +1,8 @@
+# Development folders
+.project/
+.venv/
+.tool-versions
+
+# Build folders
+build/
+*.egg-info/
