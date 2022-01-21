@@ -6,3 +6,6 @@
 # Build folders
 build/
 *.egg-info/
+
+# Docs folders
+docs/_build/

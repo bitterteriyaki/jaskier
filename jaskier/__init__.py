@@ -1,4 +1,12 @@
 """
+Jaskier
+~~~~~~~
+
+A basic handler for more rich loggings.
+
+:copyright: (c) 2022-present
+:license: MIT, see LICENSE for more details.
+
 """
 
 __title__ = 'jaskier'

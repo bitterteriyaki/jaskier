@@ -42,7 +42,6 @@ __all__ = ('JaskierHandler',)
 
 # TODO:
 # - Check compatibility with Windows.
-# - Add documentation.
 # - Add CI/CD and probably tests.
 # - Be a rockstar.
 
@@ -62,7 +61,31 @@ LEVEL_STYLES = {
 
 
 class JaskierHandler(Handler):
-    """
+    """A logging handler that add colors to the output. The time, level,
+    message and file are displayed in columns. The level is color coded
+    and the message is syntax highlighted.
+
+    Parameters
+    ----------
+    level: Union[:class:`str`, :class:`int`]
+        The handler logging level. Detaults to ``logging.NOTSET``.
+
+    Examples
+    --------
+
+    Usage: ::
+
+        import logging
+        from jaskier import JaskierHandler
+
+        logger = logging.getLogger('my-logger')
+        logger.setLevel(logging.DEBUG)
+        logger.addHandler(JaskierHandler())
+
+        logger.debug('Some debug message')
+        logger.info('And another info message')
+        # etc.
+    
     """
 
     __slots__ = ('console', 'highlighter')
@@ -74,7 +97,14 @@ class JaskierHandler(Handler):
         self.highlighter = ReprHighlighter()
 
     def render_message(self, record: LogRecord) -> ConsoleRenderable:
-        """
+        """Renders the log message. Ideally, this method adds highlights
+        to the log message.
+
+        Parameters
+        ----------
+        record: :class:`logging.LogRecord`
+            The log record event object. This object is created by the
+            logging library and you should not create it manually.
         """
         message = record.getMessage()
 
@@ -88,7 +118,12 @@ class JaskierHandler(Handler):
         traceback: Optional[Traceback],
         record: LogRecord
     ) -> ConsoleRenderable:
-        """
+        """Renders the log. Ideally, this method renders log time,
+        level, message, and file.
+
+        Parameters
+        ----------
+        message: :class:`rich.console.ConsoleRenderable`
         """
         time = datetime.datetime.fromtimestamp(record.created)
         level = record.levelname
@@ -141,6 +176,14 @@ class JaskierHandler(Handler):
         return table
 
     def emit(self, record: LogRecord) -> None:
+        """Render the log and print it to the terminal.
+
+        Parameters
+        ----------
+        record: :class:`logging.LogRecord`
+            The log record event object. This object is created by the
+            logging library and you should not create it manually.
+        """
         traceback = None
 
         if record.exc_info and record.exc_info != (None, None, None):
