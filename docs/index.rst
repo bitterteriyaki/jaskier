@@ -11,11 +11,3 @@ Welcome to Jaskier's documentation!
 
    intro
    api
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
