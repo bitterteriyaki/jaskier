@@ -42,7 +42,6 @@ __all__ = ('JaskierHandler',)
 
 # TODO:
 # - Check compatibility with Windows.
-# - Add documentation.
 # - Add CI/CD and probably tests.
 # - Be a rockstar.
 
