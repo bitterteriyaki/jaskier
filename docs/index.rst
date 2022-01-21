@@ -9,6 +9,7 @@ Welcome to Jaskier's documentation!
 .. toctree::
    :maxdepth: 1
 
+   intro
    api
 
 
