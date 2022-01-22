@@ -150,6 +150,7 @@ class JaskierHandler(Handler):
 
         # Add the log table columns.
         table.add_column(style='dim')
+        table.add_column(style='bright_blue')
         table.add_column()
         table.add_column(ratio=1, overflow='fold')
         table.add_column(style='dim')
@@ -158,6 +159,7 @@ class JaskierHandler(Handler):
         rows: List[RenderableType] = []
 
         rows.append(Text(time.strftime('[%X]')))
+        rows.append(Text(f'[{record.name}]'))
         rows.append(self._get_level_text(level))
         rows.append(Renderables(renderables))
 
