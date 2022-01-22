@@ -22,7 +22,7 @@ copyright = '2022, kyomi'
 author = 'kyomi'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
+release = '0.1.1'
 
 
 

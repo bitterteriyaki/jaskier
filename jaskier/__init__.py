@@ -13,7 +13,7 @@ __title__ = 'jaskier'
 __author__ = 'kyomi'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2022-present kyomi'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 from typing import Literal, NamedTuple
@@ -28,4 +28,4 @@ class VersionInfo(NamedTuple):
     releaselevel: Literal['alpha', 'beta', 'candidate', 'stable']
     serial: int
 
-version_info = VersionInfo(0, 1, 0, 'stable', 0)
+version_info = VersionInfo(0, 1, 1, 'stable', 0)
