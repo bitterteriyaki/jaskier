@@ -19,7 +19,7 @@ Table of Contents
 
 **Python 3.5.3 or higher is required.**
 
-To install the library, you can just run the following command:
+To install the library, you can just run the following command\:
 ```sh
 # Linux/macOS
 $ python3 -m pip install -U jaskier
