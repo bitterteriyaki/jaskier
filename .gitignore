@@ -5,6 +5,7 @@
 
 # Build folders
 build/
+dist/
 *.egg-info/
 
 # Docs folders
