@@ -21,7 +21,7 @@ setup(
     project_urls={
         'Issue tracker': 'https://github.com/soukyomi/jaskier/issues',
     },
-    version='0.1.1',
+    version='0.1.2',
     packages=packages,
     license='MIT',
     description='Library to make loggings more prettier and readable.',
