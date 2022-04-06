@@ -8,7 +8,7 @@ Library to make loggings more prettier and readable.
 
 
 Table of Contents
-=============
+=================
 <!--ts-->
   * [Installing](#installing)
   * [Quickstart](#quickstart)
