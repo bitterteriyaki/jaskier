@@ -5,7 +5,7 @@ from setuptools import setup
 packages = ['jaskier']
 
 # Library requirements
-install_requires = ['rich==11.0.0']
+install_requires = ['rich==12.2.0']
 extras_require = {'docs': ['sphinx==4.4.0', 'sphinx-material==0.0.32']}
 
 

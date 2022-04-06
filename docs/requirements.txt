@@ -1,2 +1,2 @@
-rich==11.0.0
+rich==12.2.0
 sphinx-material==0.0.32
