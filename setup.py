@@ -26,6 +26,7 @@ setup(
     license='MIT',
     description='Library to make loggings more prettier and readable.',
     long_description=readme,
+    long_description_content_type='text/x-rst',
     install_requires=install_requires,
     extras_require=extras_require,
     python_requires='>=3.8.0',
