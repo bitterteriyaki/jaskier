@@ -29,6 +29,9 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=install_requires,
     extras_require=extras_require,
+    package_data={
+        'jaskier': ['py.typed'],
+    },
     python_requires='>=3.8.0',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
